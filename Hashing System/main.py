@@ -1,7 +1,16 @@
-# This is a sample Python script.
+import json
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+dictionary = {
+    "password1": "fvrewcgreqw",
+    "password2": "g542wsqfceaw",
+    "password3": "gcwcgfdsab56",
+    "password4": "fgcfehfdseg"
+}
+
+json_object = json.dumps(dictionary, indent = 4)
+
+with open("test.json", "w") as outfile:
+    outfile.write(json_object)
 
 
 def print_hi(name):
