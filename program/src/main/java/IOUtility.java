@@ -5,6 +5,12 @@ import org.json.simple.parser.ParseException;
 import java.io.FileWriter;
 import java.io.FileReader;
 
+/**
+ * IOUtility provides static functions for file reading and writing purposes. JSON objects
+ * can be written to the PlainText.json and Hashes.json files, the former being used to
+ * store the example bad practice plain text passwords, and the latter being used to store
+ * the hashed passwords to the file.
+ */
 public final class IOUtility {
 
     @SuppressWarnings("unchecked")
@@ -16,7 +22,7 @@ public final class IOUtility {
         JSONArray hashList = new JSONArray();
 
         try {
-            FileReader reader = new FileReader("JsonFiles/PlainText.json");
+            FileReader reader = new FileReader("JsonFiles/Hashes.json");
             Object obj = jsonParser.parse(reader);
             hashList = (JSONArray) obj;
             hashList.add(login);
@@ -25,7 +31,7 @@ public final class IOUtility {
         }
 
         try {
-            FileWriter file = new FileWriter("JsonFiles/PlainText.json");
+            FileWriter file = new FileWriter("JsonFiles/Hashes.json");
             file.write(hashList.toJSONString());
             file.flush();
             file.close();
