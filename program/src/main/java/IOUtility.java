@@ -66,4 +66,23 @@ public final class IOUtility {
             exception.printStackTrace();
         }
     }
+
+    @SuppressWarnings("unchecked")
+    public static void readJSON(String key) {
+        JSONParser jsonParser = new JSONParser();
+        try {
+            FileReader reader = new FileReader("JsonFiles/PlainText.json");
+            Object obj = jsonParser.parse(reader);
+            JSONArray passwordList = (JSONArray) obj;
+
+            passwordList.forEach(info -> parsePasswords((JSONObject) info, key));
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void parsePasswords(JSONObject info, String key) {
+        String password = (String) info.get(key);
+        System.out.println(password);
+    }
 }
