@@ -9,10 +9,27 @@ public class Application {
     public static void main(String[] args) {
 
         while (true) {
-            System.out.println("Type: \n0 -> Store Plain Text \n1 -> Store Hash \n2 -> Read from Plain Text JSON file \n3 -> Read from Hashed JSON File \n4 -> exit");
+            System.out.println("Type: \n0 -> Store Plain Text \n1 -> Store Hash \n2 -> Read from Plain Text JSON file \n3 -> Read from Hashed JSON File \n4 -> Login \n5 -> exit");
             int response = Integer.parseInt(scanner.nextLine());
 
             Application app = new Application();
+
+            /*
+            switch (response) {
+                case 0:
+                    app.plainText();
+                case 1:
+                    app.hashed();
+                case 2:
+                    app.readJSONPlainText();
+                case 3:
+                    app.readJSONHashed();
+                case 4:
+                    app.verifyPassword();
+                default:
+                    break;
+            }
+             */
 
             if (response == 0)
                 app.plainText();
@@ -20,10 +37,11 @@ public class Application {
                 app.hashed();
             if (response == 2)
                 app.readJSONPlainText();
-            if (response == 3) {
+            if (response == 3)
                 app.readJSONHashed();
-            }
             if (response == 4)
+                app.verifyPassword();
+            if (response == 5)
                 break;
         }
     }
@@ -80,5 +98,24 @@ public class Application {
         String key = scanner.nextLine();
 
         IOUtility.readHashedJSON(key);
+    }
+
+    /**
+     * In order to actually confirm the hashing system works, this password verifier
+     * takes the user's password and sends it to the IOUtility password comparer.
+     * If the function returns true, the password was verified, if not, the password
+     * was input incorrectly
+     */
+    private void verifyPassword() {
+        System.out.println("Enter your username");
+        String username = scanner.nextLine();
+        System.out.println("Enter your password");
+        String password = scanner.nextLine();
+
+        if (IOUtility.comparePassword(username, password)) {
+            System.out.println("System match");
+        } else {
+            System.out.println("Match Failure");
+        }
     }
 }

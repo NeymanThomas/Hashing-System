@@ -125,6 +125,20 @@ public final class IOUtility {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    public static boolean comparePassword(String username, String password) {
+        JSONParser jsonParser = new JSONParser();
+        try {
+            FileReader reader = new FileReader("JsonFiles/Hashes.json");
+            Object obj = jsonParser.parse(reader);
+            JSONArray passwordList = (JSONArray) obj;
+
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
     /**
      * Simple function that converts a JSONObject and parses it to a string.
      * If the key matches the JSONObject string, the password is then printed
