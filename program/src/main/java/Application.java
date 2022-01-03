@@ -13,7 +13,7 @@ public class Application {
 
         Application app = new Application();
         int response = -1;
-        
+
         while (true) {
             System.out.println("Type: \n0 -> Store Plain Text \n1 -> Store Hash \n2 -> Read from Plain Text JSON file \n3 -> Read from Hashed JSON File \n4 -> Login \n5 -> exit");
 
