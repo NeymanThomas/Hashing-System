@@ -47,5 +47,8 @@ Entering:
 
 All changes to the passwords can be easily viewed under the `JsonFiles/` folder where `Hashes.json` and `PlainText.json` are stored.
 
+## Report
+A full report has been completed researching various hashing algorithms and implementing the SHA-2 algorithm itself inside the application. Other topics covered include how hashing works, its history, and the importance of securely storing information (cryptography). The report can be found [here.](docs/Report.pdf)
+
 
 
