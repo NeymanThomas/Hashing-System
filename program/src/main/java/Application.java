@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Application {
@@ -6,42 +9,34 @@ public class Application {
     public final static Scanner scanner = new Scanner(System.in);
 
     // Entry point for the application
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        Application app = new Application();
+        int response = -1;
 
         while (true) {
             System.out.println("Type: \n0 -> Store Plain Text \n1 -> Store Hash \n2 -> Read from Plain Text JSON file \n3 -> Read from Hashed JSON File \n4 -> Login \n5 -> exit");
-            int response = Integer.parseInt(scanner.nextLine());
 
-            Application app = new Application();
-
-            /*
-            switch (response) {
-                case 0:
-                    app.plainText();
-                case 1:
-                    app.hashed();
-                case 2:
-                    app.readJSONPlainText();
-                case 3:
-                    app.readJSONHashed();
-                case 4:
-                    app.verifyPassword();
-                default:
-                    break;
+            try {
+                response = Integer.parseInt(scanner.nextLine());
             }
-             */
+            catch (NumberFormatException e) {
+                System.out.println("invalid input\n");
+            }
 
+            // It would be ideal to use a switch statement but a switch does not operate properly
+            // inside the while loop for some strange reason. So we use an if-else ladder instead
             if (response == 0)
                 app.plainText();
-            if (response == 1)
+            else if (response == 1)
                 app.hashed();
-            if (response == 2)
+            else if (response == 2)
                 app.readJSONPlainText();
-            if (response == 3)
+            else if (response == 3)
                 app.readJSONHashed();
-            if (response == 4)
+            else if (response == 4)
                 app.verifyPassword();
-            if (response == 5)
+            else if (response == 5)
                 break;
         }
     }
